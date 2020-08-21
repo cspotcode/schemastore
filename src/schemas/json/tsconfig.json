@@ -1,7 +1,6 @@
 {
   "title": "JSON schema for the TypeScript compiler's configuration file",
   "$schema": "http://json-schema.org/draft-04/schema#",
-
   "definitions": {
     "filesDefinition": {
       "properties": {
@@ -72,7 +71,10 @@
             },
             "declarationDir": {
               "description": "Specify output directory for generated declaration files. Requires TypeScript version 2.0 or later.",
-              "type": ["string", "null"]
+              "type": [
+                "string",
+                "null"
+              ]
             },
             "diagnostics": {
               "description": "Show diagnostic information.",
@@ -94,7 +96,6 @@
               "description": "Specify file to store incremental compilation information.",
               "type": "string"
             },
-
             "inlineSourceMap": {
               "description": "Emit a single file with source maps instead of having a separate file.",
               "type": "boolean"
@@ -105,7 +106,11 @@
             },
             "jsx": {
               "description": "Specify JSX code generation: 'preserve', 'react', or 'react-native'.",
-              "enum": [ "preserve", "react", "react-native" ]
+              "enum": [
+                "preserve",
+                "react",
+                "react-native"
+              ]
             },
             "reactNamespace": {
               "description": "Specifies the object invoked for createElement and __spread when targeting 'react' JSX emit.",
@@ -124,7 +129,17 @@
               "type": "string",
               "anyOf": [
                 {
-                  "enum": [ "CommonJS", "AMD", "System", "UMD", "ES6", "ES2015", "ES2020", "ESNext", "None" ]
+                  "enum": [
+                    "CommonJS",
+                    "AMD",
+                    "System",
+                    "UMD",
+                    "ES6",
+                    "ES2015",
+                    "ES2020",
+                    "ESNext",
+                    "None"
+                  ]
                 },
                 {
                   "pattern": "^([Cc][Oo][Mm][Mm][Oo][Nn][Jj][Ss]|[AaUu][Mm][Dd]|[Ss][Yy][Ss][Tt][Ee][Mm]|[Ee][Ss]([356]|201[567]|2020|[Nn][Ee][Xx][Tt])|[Nn][Oo][Nn][Ee])$"
@@ -409,7 +424,6 @@
                     "enum": [
                       "ES5",
                       "ES6",
-
                       "ES2015",
                       "ES2015.Collection",
                       "ES2015.Core",
@@ -420,36 +434,30 @@
                       "ES2015.Reflect",
                       "ES2015.Symbol.WellKnown",
                       "ES2015.Symbol",
-
                       "ES2016",
                       "ES2016.Array.Include",
-
                       "ES2017",
                       "ES2017.Intl",
                       "ES2017.Object",
                       "ES2017.SharedMemory",
                       "ES2017.String",
                       "ES2017.TypedArrays",
-
                       "ES2018",
                       "ES2018.AsyncGenerator",
                       "ES2018.AsyncIterable",
                       "ES2018.Intl",
                       "ES2018.Promise",
                       "ES2018.Regexp",
-
                       "ES2019",
                       "ES2019.Array",
                       "ES2019.Object",
                       "ES2019.String",
                       "ES2019.Symbol",
-
                       "ES2020",
                       "ES2020.BigInt",
                       "ES2020.Promise",
                       "ES2020.String",
                       "ES2020.Symbol.WellKnown",
-
                       "ESNext",
                       "ESNext.Array",
                       "ESNext.AsyncIterable",
@@ -458,12 +466,9 @@
                       "ESNext.Promise",
                       "ESNext.String",
                       "ESNext.Symbol",
-
                       "DOM",
                       "DOM.Iterable",
-
                       "ScriptHost",
-
                       "WebWorker",
                       "WebWorker.ImportScripts"
                     ]
@@ -691,6 +696,10 @@
               "description": "Emit output files into `.ts-node` directory.",
               "type": "boolean"
             },
+            "experimentalEsmLoader": {
+              "description": "True if require() hooks should interop with experimental ESM loader.\nEnabled explicitly via a flag since it is a breaking change.",
+              "type": "boolean"
+            },
             "files": {
               "default": false,
               "description": "Load files from `tsconfig.json` on startup.",
@@ -729,6 +738,13 @@
               "description": "Use pretty diagnostic formatter.",
               "type": "boolean"
             },
+            "require": {
+              "description": "Modules to require, like node's `--require` flag.\n\nIf specified in tsconfig.json, the modules will be resolved relative to the tsconfig.json file.\n\nIf specified programmatically, each input string should be pre-resolved to an absolute path for\nbest results.",
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
             "scope": {
               "default": false,
               "description": "Scope compiler to files within `cwd`.",
@@ -757,17 +773,38 @@
   },
   "type": "object",
   "allOf": [
-    { "$ref": "#/definitions/compilerOptionsDefinition" },
-    { "$ref": "#/definitions/compileOnSaveDefinition" },
-    { "$ref": "#/definitions/typeAcquisitionDefinition" },
-    { "$ref": "#/definitions/extendsDefinition" },
-    { "$ref": "#/definitions/tsNodeDefinition" },
+    {
+      "$ref": "#/definitions/compilerOptionsDefinition"
+    },
+    {
+      "$ref": "#/definitions/compileOnSaveDefinition"
+    },
+    {
+      "$ref": "#/definitions/typeAcquisitionDefinition"
+    },
+    {
+      "$ref": "#/definitions/extendsDefinition"
+    },
+    {
+      "$ref": "#/definitions/tsNodeDefinition"
+    },
+    {
+      "$ref": "#/definitions/tsNodeDefinition"
+    },
     {
       "anyOf": [
-        { "$ref": "#/definitions/filesDefinition" },
-        { "$ref": "#/definitions/excludeDefinition" },
-        { "$ref": "#/definitions/includeDefinition" },
-        { "$ref": "#/definitions/referencesDefinition" }
+        {
+          "$ref": "#/definitions/filesDefinition"
+        },
+        {
+          "$ref": "#/definitions/excludeDefinition"
+        },
+        {
+          "$ref": "#/definitions/includeDefinition"
+        },
+        {
+          "$ref": "#/definitions/referencesDefinition"
+        }
       ]
     }
   ]
